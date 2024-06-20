@@ -1,16 +1,19 @@
-import { useEffect, useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/electron-vite.animate.svg";
-import "./App.css";
+import { lazy, useEffect, useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/electron-vite.animate.svg'
+import './App.css'
+const PageOne = lazy(() => import('./pages/PageOne'))
 function App() {
-  const [count, setCount] = useState(0);
-  const [chromeVersion, setChromeVersion] = useState<string>("");
+  const [count, setCount] = useState(0)
+  const [chromeVersion, setChromeVersion] = useState<string>('')
+
   useEffect(() => {
-    (async () => {
-      const version = await window.ipcRenderer.invoke("get-chrome-version");
-      setChromeVersion(version);
-    })();
-  }, []);
+    ;(async () => {
+      const version = await window.ipcRenderer.invoke('get-chrome-version')
+      setChromeVersion(version)
+    })()
+  }, [])
+
   return (
     <>
       <div>
@@ -22,20 +25,13 @@ function App() {
         </a>
       </div>
       <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-        <p>Chrome版本: {chromeVersion}</p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <PageOne />
+      <button onClick={() => setCount((count) => count + 1)}>
+        count is {count}
+      </button>
+      <p>Chrome版本: {chromeVersion}</p>
     </>
-  );
+  )
 }
 
-export default App;
+export default App
