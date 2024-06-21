@@ -11,10 +11,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@linaria/core": "^6.2.0",
+    "@linaria/react": "^6.2.1",
+    "@wyw-in-js/babel-preset": "^0.5.3",
     "ahooks": "^3.8.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.23.1"
+    "react-router-dom": "^6.23.1",
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
     "@types/react": "^18.2.64",
@@ -22,6 +26,7 @@
     "@typescript-eslint/eslint-plugin": "^7.1.1",
     "@typescript-eslint/parser": "^7.1.1",
     "@vitejs/plugin-react": "^4.2.1",
+    "@wyw-in-js/vite": "^0.5.3",
     "electron": "^30.0.1",
     "electron-builder": "^24.13.3",
     "eslint": "^8.57.0",
