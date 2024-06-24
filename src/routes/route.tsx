@@ -1,6 +1,6 @@
-import { createBrowserRouter } from 'react-router-dom'
+import { createHashRouter } from 'react-router-dom'
 import Index from '../pages/Index'
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: '/',
     element: <Index />,

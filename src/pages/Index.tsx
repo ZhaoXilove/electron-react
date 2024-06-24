@@ -25,6 +25,8 @@ function App() {
         </a>
       </div>
       <h1>Vite + React</h1>
+      <p>{import.meta.env.BASE_URL}</p>
+      <p>{import.meta.env.VITE_APP_NAME}</p>
       <PageOne />
       <button onClick={() => setCount((count) => count + 1)}>
         count is {count}
