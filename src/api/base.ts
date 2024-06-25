@@ -1,14 +1,10 @@
-import axios, {
-  AxiosInstance,
-  AxiosResponse,
-  AxiosRequestConfig,
-  AxiosRequestHeaders,
-} from 'axios'
+import axios, { AxiosInstance, AxiosResponse, AxiosRequestConfig, AxiosRequestHeaders } from 'axios'
+import qs from 'qs'
 
 /**
  * @description AxiosConfig  解决新版Axios Type不能分配问题
  */
-interface AdaptAxiosRequestConfig extends AxiosRequestConfig {
+export interface AdaptAxiosRequestConfig extends AxiosRequestConfig {
   headers: AxiosRequestHeaders
 }
 
@@ -29,7 +25,7 @@ function handleUnexpectedError(error: string) {
 /**
  * @description Axios实例
  */
-const axiosInstance: AxiosInstance = axios.create({
+export const axiosInstance: AxiosInstance = axios.create({
   baseURL: 'https://api.example.com',
   timeout: 5000, // 请求超时时间
   headers: {
@@ -82,15 +78,17 @@ export const post = async <T>(url: string, data: T): Promise<any> => {
   }
 }
 
+type Parameters = Record<string, string>
+
 /**
  * @description 封装GET请求方法
  * @param url
  * !toast return unknown
  */
-export const get = async (url: string): Promise<unknown> => {
+export const get = async (url: string, parameters: Parameters = {}): Promise<unknown> => {
   try {
-    const response = await axiosInstance.get(url)
-    return response
+    const urlWithQuery = `${url}${qs.parse(parameters)}`
+    return await axiosInstance.get(urlWithQuery)
   } catch (error) {
     if (axios.isAxiosError(error)) {
       handleAxiosError(error.message)
@@ -99,5 +97,3 @@ export const get = async (url: string): Promise<unknown> => {
     }
   }
 }
-
-export default axiosInstance

@@ -1,9 +1,9 @@
-import axiosInstance from '../base'
+import { axiosInstance as base } from '../base'
 import { useQuery } from '@tanstack/react-query'
 
-const useGetList = (url: string) => {
+const useGetList = () => {
   const fetchData = async () => {
-    const response = await axiosInstance.get(url)
+    const response = await base.get('/api/mock')
     return response.data
   }
 
