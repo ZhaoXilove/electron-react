@@ -2,6 +2,7 @@ import { lazy, useEffect, useState } from 'react'
 import reactLogo from '../assets/react.svg'
 import viteLogo from '/electron-vite.animate.svg'
 import '../App.css'
+import Demo from '@C/Demo'
 const PageOne = lazy(() => import('./PageOne'))
 function App() {
   const [count, setCount] = useState(0)
@@ -24,13 +25,12 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
+        <Demo />
       <h1>Vite + React</h1>
       <p>{import.meta.env.BASE_URL}</p>
       <p>{import.meta.env.VITE_APP_NAME}</p>
       <PageOne />
-      <button onClick={() => setCount((count) => count + 1)}>
-        count is {count}
-      </button>
+      <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
       <p>Chrome版本: {chromeVersion}</p>
     </>
   )

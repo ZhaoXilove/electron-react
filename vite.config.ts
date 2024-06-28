@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import path from 'node:path'
+import { resolve } from 'path'
 import electron from 'vite-plugin-electron/simple'
 import react from '@vitejs/plugin-react'
 import wyw from '@wyw-in-js/vite'
@@ -34,4 +35,10 @@ export default defineConfig({
       },
     }),
   ],
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, 'src'),
+      '@C': resolve(__dirname, 'src/components'),
+    },
+  },
 })
