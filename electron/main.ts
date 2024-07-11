@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain, session } from 'electron'
+import { app, BrowserWindow, ipcMain, session, Menu } from 'electron'
 // import { createRequire } from 'node:module'
 import { fileURLToPath } from 'node:url'
 import path from 'node:path'
@@ -71,6 +71,9 @@ app.on('activate', () => {
 ipcMain.handle('get-chrome-version', () => {
   return process.versions.chrome
 })
+
+// 关闭菜单栏
+Menu.setApplicationMenu(null)
 
 /**
  * 暂时忽略
